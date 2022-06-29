@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:22.05-py3
+FROM nvcr.io/nvidia/pytorch:21.12-py3
 
 LABEL maintainer='smz5505@psu.edu'
 
