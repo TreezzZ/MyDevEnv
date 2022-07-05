@@ -16,7 +16,7 @@ RUN cd \
 
 # Configure neovim
 RUN mkdir -p /root/.config/nvim \
-    && pip install neovim \
+    && pip install neovim isort\
     && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 COPY init.vim /root/.config/nvim/
 RUN mv /usr/bin/nvim /usr/bin/vim

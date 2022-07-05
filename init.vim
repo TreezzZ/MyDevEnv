@@ -175,6 +175,9 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'fisadev/vim-isort'
+let g:vim_isort_map = '<C-i>'
+
 Plug 'scrooloose/nerdtree'
 map <f2> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '+'
@@ -182,3 +185,5 @@ let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeSize=10
 autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 call plug#end()
+
+inoremap jj <Esc>
