@@ -1,12 +1,14 @@
-FROM nvcr.io/nvidia/pytorch:21.12-py3
+FROM nvcr.io/nvidia/pytorch:22.05-py3
 
 LABEL maintainer='smz5505@psu.edu'
 
 # Install basic softwares
-RUN apt-get update && apt-get install -y neovim zsh tmux \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata \
+    && apt-get install -y software-properties-common \
+    && add-apt-repository -y ppa:neovim-ppa/stable \
+    && apt-get update && apt-get install -y neovim zsh tmux \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
 
 # Configure tmux
 RUN cd \
