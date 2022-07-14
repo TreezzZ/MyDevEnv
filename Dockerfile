@@ -2,6 +2,8 @@ FROM nvcr.io/nvidia/pytorch:22.05-py3
 
 LABEL maintainer='smz5505@psu.edu'
 
+ENV TZ="America/New_York"
+
 # Install basic softwares
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata \
     && apt-get install -y software-properties-common \
@@ -15,11 +17,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata \
 RUN cd \
     && git clone https://github.com/gpakosz/.tmux.git \
     && ln -s -f .tmux/.tmux.conf \
-    && cp .tmux/.tmux.conf.local .
+    && cp .tmux/.tmux.conf.local . \
+    && printf "set -g default-terminal \"xterm-256color\"\nset -ag terminal-overrides \",xterm-256color:RGB\"" >> .tmux.conf.local
 
 # Configure neovim
 RUN mkdir -p /root/.config \
-    && printf "alias vim='nvim'\nalias vi='nvim'" >> /root/.bashrc
+    && printf "alias vim='nvim'\nalias vi='nvim'\n\nexport TERM=xterm-256color" >> /root/.bashrc
 RUN curl -L -o ripgrep.deb https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb \
     && dpkg -i ripgrep.deb
 RUN curl -L -o fd.deb https://github.com/sharkdp/fd/releases/download/v8.4.0/fd_8.4.0_amd64.deb \
