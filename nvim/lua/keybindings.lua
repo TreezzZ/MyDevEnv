@@ -5,7 +5,7 @@ vim.g.maplocalleader = " "
 
 -- Reserve to local variables
 local map = vim.api.nvim_set_keymap
-local opt = {noremap = true, silent = true}
+local opt = { noremap = true, silent = true }
 
 ------------ Basic --------------------
 map("i", "jj", "<Esc>", opt)
@@ -44,7 +44,7 @@ local plugin_keys = {}
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
 plugin_keys.nvimTreeList = {
     -- Open file
-    { key = {"<CR>", "o"}, action = "edit" },
+    { key = { "<CR>", "o" }, action = "edit" },
 
     -- Enter upper directory
     { key = "u", action = "dir_up" },
@@ -69,8 +69,8 @@ plugin_keys.nvimTreeList = {
 
 ------ Bufferline
 -- Switch left and right tab
-map("n", "<C-h>", ":BufferlineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferlineCycleNext<CR>", opt)
+map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
+map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 
 -- Close tab
 map("n", "<C-w>", ":Bdelete!<CR>", opt)
@@ -90,5 +90,24 @@ plugin_keys.telescopeList = {
     },
 }
 
+------ LSP
+plugin_keys.mapLSP = function(mapbuf)
+    mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+    mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+
+    -- Goto
+    mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+    mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+    mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+    mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+    mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+
+    -- Diagnostic
+    mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
+    mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+    mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+
+    mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()", opt)
+end
 
 return plugin_keys
