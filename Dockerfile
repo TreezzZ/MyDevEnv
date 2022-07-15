@@ -29,6 +29,7 @@ RUN curl -L -o fd.deb https://github.com/sharkdp/fd/releases/download/v8.4.0/fd_
     && dpkg -i fd.deb
 COPY nvim /root/.config/nvim
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim 
+RUN pip install black isort neovim
 
 # TODO:
 # 1. Configure zsh (ohmyzsh)

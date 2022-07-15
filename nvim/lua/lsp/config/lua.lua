@@ -35,7 +35,7 @@ local opts = {
         require('keybindings').mapLSP(buf_set_keymap)
 
         -- Format when saving
-        vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+        vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.format()')
     end,
 }
 

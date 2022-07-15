@@ -7,4 +7,6 @@ printf "alias vim='nvim'\nalias vi='nvim'\n\nexport TERM=xterm-256color" >> /roo
 echo "Install NeoVim plugins"
 nvim +PackerSync
 
+echo "Next, using :LspInstall pyright, and :VimspectorInstall debugpy"
+
 rm install.sh zsh_install.sh

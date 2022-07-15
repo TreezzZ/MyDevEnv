@@ -110,4 +110,35 @@ plugin_keys.mapLSP = function(mapbuf)
     mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()", opt)
 end
 
+------ Completion
+plugin_keys.cmp = function(cmp)
+    return {
+        ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+        ["<A-,>"] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        -- ["<CR>"] = cmp.mapping.confirm({
+        --     select = true,
+        --     behavior = cmp.ConfirmBehavior.Replace
+        -- }),
+        ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    }
+end
+
+------ Vimspector
+plugin_keys.mapVimspector = function()
+    map("n", "<Leader>ds", ":call vimspector#Launch()<CR>", opt)
+    map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
+    map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
+    map("n", "<Leader>db", ":call vimspector#ToggleBreakpoint()<CR>", opt)
+    map("n", "<Leader>dcb", ":call vimspector#ClearBreakpoints()<CR>", opt)
+    map("n", "<F10>", ":call vimspector#StepOver()<CR>", opt)
+    map("n", "<F11>", ":call vimspector#StepInto()<CR>", opt)
+    map("n", "<F12>", ":call vimspector#StepOut()<CR>", opt)
+end
+
 return plugin_keys

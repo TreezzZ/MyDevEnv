@@ -49,6 +49,24 @@ packer.startup(function(use)
     use { "williamboman/nvim-lsp-installer", commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" }
     use { "neovim/nvim-lspconfig" }
 
+    -- Completion
+    use { "hrsh7th/nvim-cmp" }
+    use { "hrsh7th/vim-vsnip" }
+    use { "hrsh7th/cmp-vsnip" }
+    use { "hrsh7th/cmp-nvim-lsp" }
+    use { "hrsh7th/cmp-buffer" }
+    use { "hrsh7th/cmp-path" }
+    use { "hrsh7th/cmp-cmdline" }
+    use { "rafamadriz/friendly-snippets" }
+
+    -- Inden blankline
+    use { "lukas-reineke/indent-blankline.nvim" }
+
+    -- Formatter
+    use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
+
+    -- Debugger
+    use { "puremourning/vimspector" }
 end)
 
 -- Auto install plugins when saving the plugins.lua
