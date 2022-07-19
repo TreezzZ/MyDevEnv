@@ -1,3 +1,6 @@
+# pytorch:22.05-py3: pytorch 1.12
+# pytorch:21.12-py3: pytorch 1.11
+# pytorch:21.02-py3: pytorch 1.8
 FROM nvcr.io/nvidia/pytorch:22.05-py3
 
 LABEL maintainer='smz5505@psu.edu'
