@@ -25,10 +25,14 @@ map("n", "sc", "<C-w>c", opt)
 map("n", "so", "<C-w>o", opt)
 
 -- Using ALT + hjkl to switch between windows
-map("n", "<A-h>", "<C-w>h", opt)
-map("n", "<A-j>", "<C-w>j", opt)
-map("n", "<A-k>", "<C-w>k", opt)
-map("n", "<A-l>", "<C-w>l", opt)
+-- map("n", "<A-h>", "<C-w>h", opt)
+-- map("n", "<A-j>", "<C-w>j", opt)
+-- map("n", "<A-k>", "<C-w>k", opt)
+-- map("n", "<A-l>", "<C-w>l", opt)
+map("n", "˙", "<C-w>h", opt)
+map("n", "∆", "<C-w>j", opt)
+map("n", "˚", "<C-w>k", opt)
+map("n", "¬", "<C-W>l", opt)
 
 -- Adjust window size
 map("n", "<C-Left>", ":vertical resize -2<CR>", opt)

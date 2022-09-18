@@ -1,7 +1,8 @@
 # pytorch:22.05-py3: pytorch 1.12
 # pytorch:21.12-py3: pytorch 1.11
 # pytorch:21.02-py3: pytorch 1.8
-FROM nvcr.io/nvidia/pytorch:22.05-py3
+# pytorch:20.10-py3: pytorch 1.7
+FROM nvcr.io/nvidia/pytorch:20.10-py3
 
 LABEL maintainer='smz5505@psu.edu'
 
@@ -15,6 +16,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+# Install node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+    && apt-get install -y nodejs
 
 # Configure tmux
 RUN cd \
