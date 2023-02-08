@@ -1,12 +1,14 @@
+echo "Configure LunarVim..."
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+
 echo "Configure ZSH..."
 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh >> zsh_install.sh
 sh zsh_install.sh
 sed -i s/robbyrussell/ys/g .zshrc
-printf "alias vim='nvim'\nalias vi='nvim'\n\nexport TERM=xterm-256color" >> /root/.zshrc
 
-echo "Install NeoVim plugins"
-nvim +PackerSync
+printf "export PATH=\"/opt/conda/bin:/root/.local/bin:\$PATH\"\nalias vim='lvim'\nalias vi='lvim'\n\nexport TERM=xterm-256color" >> /root/.zshrc
 
-echo "Next, using :LspInstall pyright, and :VimspectorInstall debugpy"
+service ssh start
 
-rm install.sh zsh_install.sh
+
+rm install.sh zsh_install.sh 
